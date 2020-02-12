@@ -1,0 +1,17 @@
+<template>
+<view>{{age}}</view>
+</template>
+
+<script>
+import wepy from 'wepy'
+// 导入search.js
+import mix from '@/mixins/tabs/search.js'
+
+export default class extends wepy.page {
+	// 放到数组中
+  mixins = [mix]
+}
+</script>
+
+<style lang='less'>
+</style>
