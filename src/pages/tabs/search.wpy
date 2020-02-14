@@ -1,17 +1,56 @@
 <template>
-<view>{{age}}</view>
+<view>
+  <!-- 搜索区域 -->
+  <van-search
+  value="{{ value }}"
+  placeholder="请输入搜索关键词"
+  show-action
+  bind:search="onSearch"
+  bind:cancel="onCancel"
+  bind:change="onChange"
+/>
+<!--商品介意展示区域-->
+<van-cell-group wx:if="{{ isShowHistory === true }}">
+<block wx:for='{{ SuggestList }}' wx:key='index' >
+  <van-cell title="{{item.goods_name}}"  />
+</block>
+</van-cell-group>
+<!---历史记录与删除icon----->
+ <view wx:else>
+    <view class='box' >
+       <text>历史记录</text>
+       <van-icon name="delete" @tap='clear'/>
+    </view>
+<!----渲染页签区域------>
+     <block wx:for="{{ keysList }}" wx:key="index">
+     <van-tag size="large" class='vantag' @tap="goGoodsList({{item}})">{{ item }}</van-tag>
+     </block>
+ </view>
+</view>
 </template>
 
 <script>
 import wepy from 'wepy'
-// 导入search.js
+
 import mix from '@/mixins/tabs/search.js'
 
 export default class extends wepy.page {
-	// 放到数组中
   mixins = [mix]
 }
 </script>
 
 <style lang='less'>
+.box{
+	display: flex;
+	justify-content: space-between;
+	padding: 20rpx;
+	text:nth-child(1){
+		font-size: 26rpx;
+		font-weight: bold;
+	}
+}
+.vantag{
+  display: inline-block;
+	margin: 9rpx;
+}
 </style>

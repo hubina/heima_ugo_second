@@ -1,0 +1,38 @@
+<template>
+<view>
+    <!-- 商品列表card组件 -->
+    <block wx:for="{{goodsList}}" wx:key='index'>
+    <van-card
+  num="{{item.goods_number}}"
+  price="{{item.goods_price}}"
+  title="{{item.goods_name}}"
+  thumb="{{ item.goods_small_logo }}" @tap="goGoodsDetail({{item.goods_id}})" />
+  <!-- 分割线组件 -->
+  <van-divider class='line'/>
+  <!-- 触底最底层提示文本 -->
+</block>
+<view class='a' hidden='{{isCover === false}}'>-----已经触底了----</view>
+</view>
+</template>
+
+<script>
+import wepy from 'wepy'
+import mix from '@/mixins/goods_list.js'
+
+export default class extends wepy.page {
+  mixins = [mix]
+}
+</script>
+
+<style lang='less'>
+// .line{
+//   border: 1rpx solid #eee;
+// }
+.a{
+    font-size: 24rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    text-align: center;
+    color: red;
+}
+</style>

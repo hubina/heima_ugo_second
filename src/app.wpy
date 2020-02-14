@@ -12,6 +12,7 @@
 <script>
   import wepy from 'wepy'
   import 'wepy-async-function'
+  import '@/baseAPI.js'
   export default class extends wepy.app {
     config = {
       pages: [
@@ -19,13 +20,16 @@
         'pages/tabs/cates',
         'pages/tabs/search',
         'pages/tabs/cart',
-        'pages/tabs/me'
+        'pages/tabs/me',
+        'pages/goods_list',
+        'pages/goods_detail/main'
       ],
       window: {
         backgroundTextStyle: 'light',
-        navigationBarBackgroundColor: '#d81e06',
+        navigationBarBackgroundColor: '#2b4b6b',
         navigationBarTitleText: '黑马优购',
-        navigationBarTextStyle: 'white'
+        navigationBarTextStyle: 'white',
+        onReachBottomDistance: 100
       },
       tabBar: {
         list: [{
@@ -62,7 +66,13 @@
       },
       // vant组件引入
       'usingComponents': {
-        'van-search': '/assets/vant/search/index'
+        'van-search': '/assets/vant/search/index',
+        'van-cell': '/assets/vant/cell/index',
+        'van-cell-group': '/assets/vant/cell-group/index',
+        'van-icon': '/assets/vant/icon/index',
+        'van-tag': '/assets/vant/tag/index',
+        'van-card': '/assets/vant/card/index',
+        'van-divider': '/assets/vant/divider/index'
       }
     }
     globalData = {
@@ -71,6 +81,7 @@
     constructor() {
       super()
       this.use('requestfix')
+      this.use('promisify')
     }
     onLaunch() {
       this.testAsync()

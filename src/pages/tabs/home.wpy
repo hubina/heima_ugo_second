@@ -14,4 +14,3 @@ export default class extends wepy.page {
 <style lang="less">
 
 </style>
-

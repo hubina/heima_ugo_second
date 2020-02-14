@@ -1,0 +1,18 @@
+<template>
+<view>商品详情页</view>
+ <view>{{ age }}</view>
+</template>
+
+<script>
+import wepy from 'wepy'
+import mix from '@/mixins/goods_detail/main.js'
+
+export default class extends wepy.page {
+    mixins = [mix]
+}
+
+</script>
+
+<style lang="less" scoped>
+
+</style>

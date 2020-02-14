@@ -1,12 +1,14 @@
 <template>
-<view></view>
+<view>{{age}}</view>
 </template>
 
 <script>
 import wepy from 'wepy'
 
-export default class extends wepy.page {
+import mix from '@/mixins/tabs/cate.js'
 
+export default class extends wepy.page {
+  mixins = [mix]
 }
 
 </script>
